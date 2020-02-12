@@ -29,3 +29,4 @@ except KeyboardInterrupt:
 #terminate the program
 myPwm.stop()
 GPIO.cleanup()
+print("Terminating program")

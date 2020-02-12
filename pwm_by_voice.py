@@ -29,16 +29,21 @@ duty = np.clip(duty, 0, 100)
 print("duty ratio:" + str(duty))
 myPwm.start(duty)
 
-print("PWM output enabled for 5 seconds")
-
 # output PWM signal for 5 seconds
-start = time.time()
-while (time.time()-start) < 5:
-	continue
+try:
+    print("PWM output enabled for 5 seconds")
+    start = time.time()
+    while (time.time()-start) < 5:
+        continue
+except:
+    pass
 
 # terminate the program
 myPwm.stop()
 GPIO.cleanup()
+print("Terminating the program")
+
+
 '''
 plt.plot(data_freq, data_fft)
 plt.xlabel('frequency [Hz]')
