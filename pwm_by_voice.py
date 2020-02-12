@@ -15,8 +15,8 @@ segment = data
 
 data_fft = fftpack.fft(data[0:segment_size], fftsize)
 data_freq = fftpack.fftfreq(fftsize, 1/samplerate)
-note = data_freq[np.argmax(data_fft)]
-print("domanant frequency:" + str(note))
+peak_freq = data_freq[np.argmax(data_fft)]
+print("peak frequency:" + str(peak_freq))
 
 # set PWM output
 GPIO.setmode(GPIO.BCM)
@@ -24,7 +24,7 @@ GPIO.setup(18, GPIO.OUT)
 myPwm = GPIO.PWM(18, 1000)
 
 # calculate duty ratio
-duty = 100*note/(800 - 100)
+duty = 100*peak_freq/(800 - 100)
 duty = np.clip(duty, 0, 100)
 print("duty ratio:" + str(duty))
 myPwm.start(duty)
