@@ -20,8 +20,11 @@ print("PWM output enabled for 5 seconds")
 
 #remain PWM on for 5 seconds
 start = time.time()
-while (time.time()-start) < 5:
-	continue
+try:
+    while (time.time()-start) < 5:
+        continue
+except KeyboardInterrupt:
+    pass
 
 #terminate the program
 myPwm.stop()
